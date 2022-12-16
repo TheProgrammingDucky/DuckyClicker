@@ -1,5 +1,3 @@
-def quack():
-    print("Quack")
+import pygame
 
-
-quack()
+print("Quack")
