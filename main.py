@@ -1,3 +1,3 @@
 import pygame
 
-print("Quack Quack")
+print("Quack Quack Quack Quack Quack Quack Quack")
