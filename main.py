@@ -1,1 +1,5 @@
-print("Quack")
+def quack():
+    print("Quack")
+
+
+quack()
