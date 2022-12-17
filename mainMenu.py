@@ -35,6 +35,7 @@ while True:
 
     clock.tick(20)
     SCREEN.fill(black)
+    mouse_pos = pygame.mouse.get_pos()
     startGameButton = Button(image=pygame.image.load("images/startGameButton.png"), pos=(400, 500))
 
     for button in [startGameButton]:
@@ -45,6 +46,7 @@ while True:
             pygame.quit()
             sys.exit()
         if event.type == pygame.MOUSEBUTTONDOWN and event.button == 1:
-            import game
-            game
+           if startGameButton.checkForInput(mouse_pos):
+               import game
+
     pygame.display.update()
