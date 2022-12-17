@@ -3,7 +3,6 @@ import pygame_gui
 from button import Button
 from pygame_functions import *
 
-
 pygame.init()
 WIDTH, HEIGHT = 800, 1000
 SCREEN = pygame.display.set_mode((WIDTH, HEIGHT))
@@ -36,7 +35,6 @@ while True:
 
     clock.tick(20)
     SCREEN.fill(black)
-    mouse_pos = pygame.mouse.get_pos()
     startGameButton = Button(image=pygame.image.load("images/startGameButton.png"), pos=(400, 500))
 
     for button in [startGameButton]:
@@ -47,7 +45,6 @@ while True:
             pygame.quit()
             sys.exit()
         if event.type == pygame.MOUSEBUTTONDOWN and event.button == 1:
-            if startGameButton.checkForInput(mouse_pos):
-                import game
-
+            import game
+            game
     pygame.display.update()
