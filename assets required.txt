@@ -1,7 +1,19 @@
 1. main duck image (the one you click)
 
-2. a game logo
+2. a game logo (currently an image off of the web)
 
-3. background (similar to mobile cookie clicker with cookies falling down but Ducks instead of cookies)
+3. background (similar to mobile cookie clicker with cookies falling down but Ducks instead of cookies)(possibly need multiple for seasonal events etc)
 
-4.
+4. shop icon
+
+5. settings icon
+
+6. prestige icon
+
+7. background music (a simple small loop)
+
+8. quack sound when duck is clicked
+
+9. save icon
+
+10. 
