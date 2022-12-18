@@ -2,6 +2,8 @@ import pygame.font
 import pygame_gui
 from button import Button
 from pygame_functions import *
+import runpy
+import os
 
 # All images/fonts below here
 pygame.init()
@@ -13,8 +15,12 @@ font1 = pygame.font.SysFont("monospace", 75)
 clock = pygame.time.Clock()
 white = (255, 255, 255)
 black = (0, 0, 0)
-# All player stats below here
-score = 0
+
+
+# All player stats from save file below here
+
+save = open("save.txt", "rt")
+score = int(save.read())
 
 
 class Button:
@@ -44,15 +50,35 @@ while True:
 
     mainDuck = Button(image=pygame.image.load("images/duckInc logo.png"), pos=(400, 500))
     shopIcon = Button(image=pygame.image.load("images/shopIcon.png"), pos=(200, 900))
+    settingsIcon = Button(image=pygame.image.load("images/settingsIcon.png"), pos=(400, 900))
+    prestigeIcon = Button(image=pygame.image.load("images/prestigeIcon2.png"), pos=(600, 900))
 
-    for button in [mainDuck, shopIcon]:
+    for button in [mainDuck, shopIcon, settingsIcon, prestigeIcon]:
         button.update(SCREEN)
 
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
+            save = open("save.txt", "wt")
+            save.write(str(score))
+            save.close()
             pygame.quit()
             sys.exit()
         if event.type == pygame.MOUSEBUTTONDOWN and event.button == 1:
             if mainDuck.checkForInput(mouse_pos):
                 score += 1
+            if shopIcon.checkForInput(mouse_pos):
+                save = open("save.txt", "wt")
+                save.write(str(score))
+                save.close()
+                runpy.run_module(mod_name="shop")
+            if settingsIcon.checkForInput(mouse_pos):
+                save = open("save.txt", "wt")
+                save.write(str(score))
+                save.close()
+                runpy.run_module(mod_name="settings")
+            if prestigeIcon.checkForInput(mouse_pos):
+                save = open("save.txt", "wt")
+                save.write(str(score))
+                save.close()
+                runpy.run_module(mod_name="prestige")
     pygame.display.update()

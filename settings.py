@@ -7,7 +7,7 @@ import runpy
 pygame.init()
 WIDTH, HEIGHT = 800, 1000
 SCREEN = pygame.display.set_mode((WIDTH, HEIGHT))
-pygame.display.set_caption("Ducky Clicker - Start")
+pygame.display.set_caption("Ducky Clicker - Settings")
 pygame.display.set_icon(pygame.image.load("images/duckInc logo.jpg"))
 font1 = pygame.font.SysFont("monospace", 75)
 clock = pygame.time.Clock()
@@ -37,9 +37,9 @@ while True:
     clock.tick(20)
     SCREEN.fill(black)
     mouse_pos = pygame.mouse.get_pos()
-    startGameButton = Button(image=pygame.image.load("images/startGameButton.png"), pos=(400, 500))
+    backButton = Button(image=pygame.image.load("images/back.png"), pos=(100, 100))
 
-    for button in [startGameButton]:
+    for button in [backButton]:
         button.update(SCREEN)
 
     for event in pygame.event.get():
@@ -47,7 +47,7 @@ while True:
             pygame.quit()
             sys.exit()
         if event.type == pygame.MOUSEBUTTONDOWN and event.button == 1:
-            if startGameButton.checkForInput(mouse_pos):
+            if backButton.checkForInput(mouse_pos):
                 runpy.run_module(mod_name="game")
 
     pygame.display.update()
