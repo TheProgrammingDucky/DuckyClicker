@@ -46,7 +46,7 @@ while True:
             pygame.quit()
             sys.exit()
         if event.type == pygame.MOUSEBUTTONDOWN and event.button == 1:
-           if startGameButton.checkForInput(mouse_pos):
-               import game
+            if startGameButton.checkForInput(mouse_pos):
+                import game
 
     pygame.display.update()

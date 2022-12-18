@@ -8,7 +8,7 @@ pygame.init()
 WIDTH, HEIGHT = 800, 1000
 SCREEN = pygame.display.set_mode((WIDTH, HEIGHT))
 pygame.display.set_caption("Ducky Clicker")
-pygame.display.set_icon(pygame.image.load("images/duckInc logo.jpg"))
+# pygame.display.set_icon(pygame.image.load("images/duckInc logo.jpg"))
 font1 = pygame.font.SysFont("monospace", 75)
 clock = pygame.time.Clock()
 white = (255, 255, 255)
@@ -41,9 +41,11 @@ while True:
     scoreText = font1.render("Score: {0}".format(score), True, white)
     SCREEN.blit(scoreText, (150, 20))
     clock.tick(20)
-    mainDuck = Button(image=pygame.image.load("images/duckInc logo.png"), pos=(400, 500))
 
-    for button in [mainDuck]:
+    mainDuck = Button(image=pygame.image.load("images/duckInc logo.png"), pos=(400, 500))
+    shopIcon = Button(image=pygame.image.load("images/shopIcon.png"), pos=(200, 900))
+
+    for button in [mainDuck, shopIcon]:
         button.update(SCREEN)
 
     for event in pygame.event.get():
