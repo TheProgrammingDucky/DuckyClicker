@@ -15,6 +15,7 @@ font1 = pygame.font.SysFont("monospace", 75)
 clock = pygame.time.Clock()
 white = (255, 255, 255)
 black = (0, 0, 0)
+quack_sound = pygame.mixer.Sound("sounds/quack.mp3")
 
 
 # All player stats from save file below here
@@ -66,6 +67,7 @@ while True:
         if event.type == pygame.MOUSEBUTTONDOWN and event.button == 1:
             if mainDuck.checkForInput(mouse_pos):
                 score += 1
+                pygame.mixer.Sound.play(quack_sound)
             if shopIcon.checkForInput(mouse_pos):
                 save = open("save.txt", "wt")
                 save.write(str(score))
