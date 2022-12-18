@@ -1,9 +1,6 @@
-import pygame.font
-import pygame_gui
-from button import Button
+import pygame.mixer
 from pygame_functions import *
 import runpy
-import os
 
 # All images/fonts below here
 pygame.init()
@@ -16,6 +13,7 @@ clock = pygame.time.Clock()
 white = (255, 255, 255)
 black = (0, 0, 0)
 quack_sound = pygame.mixer.Sound("sounds/quack.mp3")
+pygame.mixer.Sound.set_volume(quack_sound, 0.04)
 
 
 # All player stats from save file below here
@@ -45,7 +43,7 @@ while True:
 
     SCREEN.fill(black)
     mouse_pos = pygame.mouse.get_pos()
-    scoreText = font1.render("Score: {0}".format(score), True, white)
+    scoreText = font1.render("Quacks: {0}".format(score), True, white)
     SCREEN.blit(scoreText, (150, 20))
     clock.tick(20)
 

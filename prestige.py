@@ -1,6 +1,3 @@
-import pygame.font
-import pygame_gui
-from button import Button
 from pygame_functions import *
 import runpy
 pygame.init()
