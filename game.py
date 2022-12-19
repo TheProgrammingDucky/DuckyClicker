@@ -19,7 +19,8 @@ pygame.mixer.Sound.set_volume(quack_sound, 0.04)
 # All player stats from save file below here
 
 save = open("save.txt", "rt")
-score = int(save.read())
+score = int(save.readline())
+clickPower = int(save.readline())
 
 
 class Button:
@@ -59,26 +60,30 @@ while True:
         if event.type == pygame.QUIT:
             save = open("save.txt", "wt")
             save.write(str(score))
+            save.write("\n" + str(clickPower))
             save.close()
             pygame.quit()
             sys.exit()
         if event.type == pygame.MOUSEBUTTONDOWN and event.button == 1:
             if mainDuck.checkForInput(mouse_pos):
-                score += 1
+                score += clickPower
                 pygame.mixer.Sound.play(quack_sound)
             if shopIcon.checkForInput(mouse_pos):
                 save = open("save.txt", "wt")
                 save.write(str(score))
+                save.write("\n" + str(clickPower))
                 save.close()
                 runpy.run_module(mod_name="shop")
             if settingsIcon.checkForInput(mouse_pos):
                 save = open("save.txt", "wt")
                 save.write(str(score))
+                save.write("\n" + str(clickPower))
                 save.close()
                 runpy.run_module(mod_name="settings")
             if prestigeIcon.checkForInput(mouse_pos):
                 save = open("save.txt", "wt")
                 save.write(str(score))
+                save.write("\n" + str(clickPower))
                 save.close()
                 runpy.run_module(mod_name="prestige")
     pygame.display.update()
