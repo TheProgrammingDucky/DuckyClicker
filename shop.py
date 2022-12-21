@@ -1,10 +1,11 @@
 from pygame_functions import *
 import runpy
+import globals
 
 pygame.init()
 WIDTH, HEIGHT = 800, 1000
 SCREEN = pygame.display.set_mode((WIDTH, HEIGHT))
-bg = pygame.image.load("images/backgrounds/background1.xcf")
+bg = pygame.image.load(f"images/backgrounds/background{globals.bgNum}.xcf")
 pygame.display.set_caption("Ducky Clicker - Shop")
 pygame.display.set_icon(pygame.image.load("images/duckInc logo.jpg"))
 font1 = pygame.font.SysFont("monospace", 75)
@@ -42,7 +43,6 @@ while True:
     backButton = Button(image=pygame.image.load("images/back.png"), pos=(100, 100))
     clickPower_button = Button(image=pygame.image.load("images/duckyPower.xcf"), pos=(200, 300))
 
-
     for button in [backButton, clickPower_button]:
         button.update(SCREEN)
 
@@ -50,7 +50,6 @@ while True:
     SCREEN.blit(shopText, (300, 50))
     clickPower_levelTxt = font3.render("Level: " + str(clickPower_level), True, blue)
     SCREEN.blit(clickPower_levelTxt, (180, 300))
-
 
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
@@ -61,8 +60,5 @@ while True:
                 runpy.run_module(mod_name="game")
             if clickPower_button.checkForInput(mouse_pos):
                 clickPower_level += 1
-
-
-
 
     pygame.display.update()
