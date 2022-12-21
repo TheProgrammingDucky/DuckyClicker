@@ -15,7 +15,7 @@ clock = pygame.time.Clock()
 white = (255, 255, 255)
 black = (0, 0, 0)
 blue = (0, 0, 255)
-clickPower_level = 0
+clickPower_level = 7867846884684685684686
 
 
 class Button:
