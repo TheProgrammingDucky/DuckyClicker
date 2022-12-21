@@ -1,3 +1,5 @@
+import math
+
 import pygame.mixer
 from pygame_functions import *
 import runpy
@@ -39,7 +41,7 @@ while True:
     clock.tick(20)
     SCREEN.blit(bg, (0, 0))
     mouse_pos = pygame.mouse.get_pos()
-    scoreText = font1.render("Quacks: {0}".format(globals.score), True, white)
+    scoreText = font1.render("Quacks: {0}".format(math.ceil(globals.score)), True, white)
     SCREEN.blit(scoreText, (150, 20))
 
     mainDuck = Button(image=pygame.image.load("images/duckInc logo.png"), pos=(400, 500))

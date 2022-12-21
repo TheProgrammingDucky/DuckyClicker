@@ -52,6 +52,8 @@ while True:
 
     shopText = font2.render("Shop", True, white)
     SCREEN.blit(shopText, (300, 50))
+    scoreText = font1.render(str(math.ceil(globals.score)), True, white)
+    SCREEN.blit(scoreText, (WIDTH/2 - scoreText.get_width()/2, 175))
     clickPower_levelTxt = font3.render(str(globals.clickPower_level), True, blue)
     SCREEN.blit(clickPower_levelTxt, (75, 305))
     clickPower_costTxt = font3.render("Cost: " + str(math.ceil(globals.clickPower_cost)), True, blue)
@@ -67,12 +69,14 @@ while True:
             if backButton.checkForInput(mouse_pos):
                 runpy.run_module(mod_name="game")
             if clickPower_button.checkForInput(mouse_pos):
-                globals.clickPower_level += 1
-                globals.clickPower *= 2
-                globals.clickPower_cost = globals.clickPower_cost * 1.15**(int(globals.clickPower_level))
-
+                if globals.score >= globals.clickPower_cost:
+                    globals.score -= globals.clickPower_cost
+                    globals.clickPower_level += 1
+                    globals.clickPower *= 2
+                    globals.clickPower_cost = globals.clickPower_cost * 1.15**(int(globals.clickPower_level))
 
             if duckyHammer_button.checkForInput(mouse_pos):
                 globals.duckyHammer_level += 1
+
 
     pygame.display.update()
