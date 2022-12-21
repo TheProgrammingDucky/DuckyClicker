@@ -13,7 +13,7 @@ font1 = pygame.font.SysFont("monospace", 75)
 clock = pygame.time.Clock()
 white = (255, 255, 255)
 black = (0, 0, 0)
-quack_sound = pygame.mixer.Sound("sounds/quack.mp3")
+quack_sound = pygame.mixer.Sound("sounds/quack.wav")
 pygame.mixer.Sound.set_volume(quack_sound, 0.03)
 
 
