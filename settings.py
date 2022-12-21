@@ -5,11 +5,11 @@ import runpy
 pygame.init()
 WIDTH, HEIGHT = 800, 1000
 SCREEN = pygame.display.set_mode((WIDTH, HEIGHT))
-bg = pygame.image.load("images/backgrounds/b+dbBackground.xcf")
+bg = pygame.image.load("images/backgrounds/background1.xcf")
 pygame.display.set_caption("Ducky Clicker - Settings")
 pygame.display.set_icon(pygame.image.load("images/duckInc logo.jpg"))
 font1 = pygame.font.SysFont("monospace", 75)
-font1 = pygame.font.SysFont("monospace", 100)
+font2 = pygame.font.SysFont("monospace", 100)
 clock = pygame.time.Clock()
 white = (255, 255, 255)
 black = (0, 0, 0)
@@ -68,8 +68,8 @@ while True:
     mouse_pos = pygame.mouse.get_pos()
 
     # All Text Elements Below
-    settingsText = font1.render("Settings", True, white)
-    SCREEN.blit(settingsText, (240, 45))
+    settingsText = font2.render("Settings", True, white)
+    SCREEN.blit(settingsText, (210, 45))
 
     # All Buttons Below
     backButton = Button(image=pygame.image.load("images/back.png"), pos=(100, 100))
@@ -85,8 +85,8 @@ while True:
             pygame.quit()
             sys.exit()
         if event.type == pygame.MOUSEBUTTONDOWN and event.button == 1:
-            # if backgroundButton.checkForInput(mouse_pos):
-                # do_stuff
+            if backgroundButton.checkForInput(mouse_pos):
+                do_stuff
             if backButton.checkForInput(mouse_pos):
                 runpy.run_module(mod_name="game")
 
