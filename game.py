@@ -17,14 +17,6 @@ black = (0, 0, 0)
 quack_sound = pygame.mixer.Sound("sounds/quack.wav")
 pygame.mixer.Sound.set_volume(quack_sound, 0.03)
 
-
-# All player stats from save file below here
-
-save = open("save.txt", "rt")
-score = int(save.readline())
-clickPower = int(save.readline())
-
-
 class Button:
     def __init__(self, image, pos):
         self.image = image
@@ -47,7 +39,7 @@ while True:
     clock.tick(20)
     SCREEN.blit(bg, (0, 0))
     mouse_pos = pygame.mouse.get_pos()
-    scoreText = font1.render("Quacks: {0}".format(score), True, white)
+    scoreText = font1.render("Quacks: {0}".format(globals.score), True, white)
     SCREEN.blit(scoreText, (150, 20))
 
     mainDuck = Button(image=pygame.image.load("images/duckInc logo.png"), pos=(400, 500))
@@ -61,31 +53,31 @@ while True:
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
             save = open("save.txt", "wt")
-            save.write(str(score))
-            save.write("\n" + str(clickPower))
+            save.write(str(globals.score))
+            save.write("\n" + str(globals.clickPower))
             save.close()
             pygame.quit()
             sys.exit()
         if event.type == pygame.MOUSEBUTTONDOWN and event.button == 1:
             if mainDuck.checkForInput(mouse_pos):
-                score += clickPower
+                globals.score += globals.clickPower
                 pygame.mixer.Sound.play(quack_sound)
             if shopIcon.checkForInput(mouse_pos):
                 save = open("save.txt", "wt")
-                save.write(str(score))
-                save.write("\n" + str(clickPower))
+                save.write(str(globals.score))
+                save.write("\n" + str(globals.clickPower))
                 save.close()
                 runpy.run_module(mod_name="shop")
             if settingsIcon.checkForInput(mouse_pos):
                 save = open("save.txt", "wt")
-                save.write(str(score))
-                save.write("\n" + str(clickPower))
+                save.write(str(globals.score))
+                save.write("\n" + str(globals.clickPower))
                 save.close()
                 runpy.run_module(mod_name="settings")
             if prestigeIcon.checkForInput(mouse_pos):
                 save = open("save.txt", "wt")
-                save.write(str(score))
-                save.write("\n" + str(clickPower))
+                save.write(str(globals.score))
+                save.write("\n" + str(globals.clickPower))
                 save.close()
                 runpy.run_module(mod_name="prestige")
     pygame.display.update()

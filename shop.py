@@ -15,7 +15,7 @@ clock = pygame.time.Clock()
 white = (255, 255, 255)
 black = (0, 0, 0)
 blue = (0, 0, 255)
-clickPower_level = 7867846884684685684686
+
 
 
 class Button:
@@ -42,14 +42,20 @@ while True:
     mouse_pos = pygame.mouse.get_pos()
     backButton = Button(image=pygame.image.load("images/back.png"), pos=(100, 100))
     clickPower_button = Button(image=pygame.image.load("images/duckyPower.xcf"), pos=(200, 300))
+    duckyHammer_button = Button(image=pygame.image.load("images/duckyHammer.xcf"), pos=(600, 300))
 
-    for button in [backButton, clickPower_button]:
+
+    for button in [backButton, clickPower_button, duckyHammer_button]:
         button.update(SCREEN)
 
     shopText = font2.render("Shop", True, white)
     SCREEN.blit(shopText, (300, 50))
-    clickPower_levelTxt = font3.render("Level: " + str(clickPower_level), True, blue)
-    SCREEN.blit(clickPower_levelTxt, (180, 300))
+    clickPower_levelTxt = font3.render(str(globals.clickPower_level), True, blue)
+    SCREEN.blit(clickPower_levelTxt, (75, 305))
+    clickPower_costTxt = font3.render("Cost: " + str(globals.clickPower_cost), True, blue)
+    SCREEN.blit(clickPower_costTxt, (175, 305))
+    duckyHammer_levelTxt = font3.render(str(globals.duckyHammer_level), True, blue)
+    SCREEN.blit(duckyHammer_levelTxt, (475, 305))
 
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
@@ -59,6 +65,8 @@ while True:
             if backButton.checkForInput(mouse_pos):
                 runpy.run_module(mod_name="game")
             if clickPower_button.checkForInput(mouse_pos):
-                clickPower_level += 1
+                globals.clickPower_level += 1
+            if duckyHammer_button.checkForInput(mouse_pos):
+                globals.duckyHammer_level += 1
 
     pygame.display.update()
