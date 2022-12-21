@@ -8,9 +8,13 @@ bg = pygame.image.load("images/backgrounds/background1.xcf")
 pygame.display.set_caption("Ducky Clicker - Shop")
 pygame.display.set_icon(pygame.image.load("images/duckInc logo.jpg"))
 font1 = pygame.font.SysFont("monospace", 75)
+font2 = pygame.font.SysFont("monospace", 100)
+font3 = pygame.font.SysFont("monospace", 20)
 clock = pygame.time.Clock()
 white = (255, 255, 255)
 black = (0, 0, 0)
+blue = (0, 0, 255)
+clickPower_level = 0
 
 
 class Button:
@@ -36,9 +40,17 @@ while True:
     SCREEN.blit(bg, (0, 0))
     mouse_pos = pygame.mouse.get_pos()
     backButton = Button(image=pygame.image.load("images/back.png"), pos=(100, 100))
+    clickPower_button = Button(image=pygame.image.load("images/duckyPower.xcf"), pos=(200, 300))
 
-    for button in [backButton]:
+
+    for button in [backButton, clickPower_button]:
         button.update(SCREEN)
+
+    shopText = font2.render("Shop", True, white)
+    SCREEN.blit(shopText, (300, 50))
+    clickPower_levelTxt = font3.render("Level: " + str(clickPower_level), True, blue)
+    SCREEN.blit(clickPower_levelTxt, (180, 300))
+
 
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
@@ -47,5 +59,10 @@ while True:
         if event.type == pygame.MOUSEBUTTONDOWN and event.button == 1:
             if backButton.checkForInput(mouse_pos):
                 runpy.run_module(mod_name="game")
+            if clickPower_button.checkForInput(mouse_pos):
+                clickPower_level += 1
+
+
+
 
     pygame.display.update()
