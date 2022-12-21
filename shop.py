@@ -1,6 +1,7 @@
 from pygame_functions import *
 import runpy
 import globals
+import math
 
 pygame.init()
 WIDTH, HEIGHT = 800, 1000
@@ -45,6 +46,7 @@ while True:
     duckyHammer_button = Button(image=pygame.image.load("images/duckyHammer.xcf"), pos=(600, 300))
 
 
+
     for button in [backButton, clickPower_button, duckyHammer_button]:
         button.update(SCREEN)
 
@@ -52,7 +54,7 @@ while True:
     SCREEN.blit(shopText, (300, 50))
     clickPower_levelTxt = font3.render(str(globals.clickPower_level), True, blue)
     SCREEN.blit(clickPower_levelTxt, (75, 305))
-    clickPower_costTxt = font3.render("Cost: " + str(globals.clickPower_cost), True, blue)
+    clickPower_costTxt = font3.render("Cost: " + str(math.ceil(globals.clickPower_cost)), True, blue)
     SCREEN.blit(clickPower_costTxt, (175, 305))
     duckyHammer_levelTxt = font3.render(str(globals.duckyHammer_level), True, blue)
     SCREEN.blit(duckyHammer_levelTxt, (475, 305))
@@ -66,6 +68,10 @@ while True:
                 runpy.run_module(mod_name="game")
             if clickPower_button.checkForInput(mouse_pos):
                 globals.clickPower_level += 1
+                globals.clickPower *= 2
+                globals.clickPower_cost = globals.clickPower_cost * 1.15**(int(globals.clickPower_level))
+
+
             if duckyHammer_button.checkForInput(mouse_pos):
                 globals.duckyHammer_level += 1
 
