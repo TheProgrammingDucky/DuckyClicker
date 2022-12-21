@@ -4,6 +4,7 @@ import runpy
 pygame.init()
 WIDTH, HEIGHT = 800, 1000
 SCREEN = pygame.display.set_mode((WIDTH, HEIGHT))
+bg = pygame.image.load("images/backgrounds/b+dbBackground.xcf")
 pygame.display.set_caption("Ducky Clicker - Start")
 pygame.display.set_icon(pygame.image.load("images/duckInc logo.jpg"))
 font1 = pygame.font.SysFont("monospace", 75)
@@ -32,7 +33,7 @@ class Button:
 while True:
 
     clock.tick(20)
-    SCREEN.fill(black)
+    SCREEN.blit(bg, (0, 0))
     mouse_pos = pygame.mouse.get_pos()
     startGameButton = Button(image=pygame.image.load("images/startGameButton.png"), pos=(400, 500))
 

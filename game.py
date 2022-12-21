@@ -6,14 +6,15 @@ import runpy
 pygame.init()
 WIDTH, HEIGHT = 800, 1000
 SCREEN = pygame.display.set_mode((WIDTH, HEIGHT))
+bg = pygame.image.load("images/backgrounds/b+dbBackground.xcf")
 pygame.display.set_caption("Ducky Clicker")
-# pygame.display.set_icon(pygame.image.load("images/duckInc logo.jpg"))
+pygame.display.set_icon(pygame.image.load("images/duckInc logo.jpg"))
 font1 = pygame.font.SysFont("monospace", 75)
 clock = pygame.time.Clock()
 white = (255, 255, 255)
 black = (0, 0, 0)
 quack_sound = pygame.mixer.Sound("sounds/quack.mp3")
-pygame.mixer.Sound.set_volume(quack_sound, 0.04)
+pygame.mixer.Sound.set_volume(quack_sound, 0.03)
 
 
 # All player stats from save file below here
@@ -42,11 +43,11 @@ class Button:
 
 while True:
 
-    SCREEN.fill(black)
+    clock.tick(20)
+    SCREEN.blit(bg, (0, 0))
     mouse_pos = pygame.mouse.get_pos()
     scoreText = font1.render("Quacks: {0}".format(score), True, white)
     SCREEN.blit(scoreText, (150, 20))
-    clock.tick(20)
 
     mainDuck = Button(image=pygame.image.load("images/duckInc logo.png"), pos=(400, 500))
     shopIcon = Button(image=pygame.image.load("images/shopIcon.png"), pos=(200, 900))
