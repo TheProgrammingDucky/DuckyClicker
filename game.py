@@ -19,6 +19,7 @@ black = (0, 0, 0)
 quack_sound = pygame.mixer.Sound("sounds/quack.wav")
 pygame.mixer.Sound.set_volume(quack_sound, 0.03)
 
+
 class Button:
     def __init__(self, image, pos):
         self.image = image

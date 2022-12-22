@@ -11,6 +11,7 @@ pygame.display.set_caption("Ducky Clicker - Settings")
 pygame.display.set_icon(pygame.image.load("images/duckInc logo.jpg"))
 font1 = pygame.font.SysFont("monospace", 75)
 font2 = pygame.font.SysFont("monospace", 100)
+font3 = pygame.font.SysFont("monospace", 35)
 clock = pygame.time.Clock()
 white = (255, 255, 255)
 black = (0, 0, 0)
@@ -73,12 +74,29 @@ while True:
         images.append(img)
 
     # All Text Elements Below
-    settingsText = font2.render("Settings:", True, white)
+    settingsText = font2.render("Settings:", True, black)
     SCREEN.blit(settingsText, (200, 45))
+
+    match globals.bgNum:
+        case 1:
+            bgText = font3.render("-Blue and Dark Blue", True, black)
+        case 2:
+            bgText = font3.render("-Green and Blue", True, black)
+        case 3:
+            bgText = font3.render("-Red and Green", True, black)
+        case 4:
+            bgText = font3.render("-Yellow and Green", True, black)
+        case 5:
+            bgText = font3.render("-Pink and Purple", True, black)
+        case _:
+            bgText = font3.render("-Idk how in the name of fuck you got this tbh the game should have broke ages ago "
+                                  "to get this message", True, white)
+
+    SCREEN.blit(bgText, (375, 255))
 
     # All Buttons Below
     backButton = Button(image=pygame.image.load("images/back.png"), pos=(100, 100))
-    backgroundButton = Button2((300, 200), white, 300, 50, "Background")
+    backgroundButton = Button2((75, 250), white, 300, 50, "Background")
 
     backgroundButton.draw(SCREEN)
 
