@@ -5,7 +5,7 @@ import math
 
 pygame.init()
 WIDTH, HEIGHT = 800, 1000
-SCREEN = pygame.display.set_mode((WIDTH, HEIGHT))
+SCREEN = pygame.display.set_mode((WIDTH, HEIGHT), pygame.FULLSCREEN)
 bg = pygame.image.load(f"images/backgrounds/background{globals.bgNum}.xcf")
 pygame.display.set_caption("Ducky Clicker - Shop")
 pygame.display.set_icon(pygame.image.load("images/duckInc logo.jpg"))
