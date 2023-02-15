@@ -4,8 +4,8 @@ import runpy
 import globals
 
 pygame.init()
-WIDTH, HEIGHT = 800, 1000
-SCREEN = pygame.display.set_mode((WIDTH, HEIGHT), pygame.FULLSCREEN)
+infoObject = pygame.display.Info()
+SCREEN = pygame.display.set_mode((infoObject.current_w / 2, infoObject.current_h / 1.167))
 bg = pygame.image.load(f"images/backgrounds/background{globals.bgNum}.xcf")
 pygame.display.set_caption("Ducky Clicker - Settings")
 pygame.display.set_icon(pygame.image.load("images/duckInc logo.jpg"))
